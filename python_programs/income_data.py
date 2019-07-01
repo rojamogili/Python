@@ -18,10 +18,9 @@ def average_income(income):
             d[l[i][1]]=0
         for j in range(2,len(l[i]),1):
             d[l[i][1]]+=l[i][j]
-    #print(d)
     for key,values in d.items():
-        print(key,end="-")
-        print(d[key]//dif)
+        d[key]=d[key]//dif
+    return d
 def average_of_3years(income):
     l=[]
     for i in income.values:
@@ -68,8 +67,68 @@ def lowest_income(income,start,end):
             low=d[key]
             name=key
     print("\n",name,"has lowest average income ",low)
+def list_of_income_lessthan_california(income,d):
+    print("\nList of all states in the same line with average income lessthan california")
+    cali=d['California']
+    for key,value in d.items():
+        if d[key]<cali:
+            print(key,end="     ")
+def income_descending_year(income,year):
+    print("\n\nList of the names of states based on descending order of income in the year 2009")
+    k=[]
+    for i in income:
+        k=k+[i]
 
+    for i in range(0,len(k),1):
+        if year==k[i]:
+            s=i
+    l=[]
+    for i in income.values:
+        l=l+[i]
+    d={}
+    value=[]
+    for i in range(0,len(l),1):
+        if l[i][1] not in d:
+            d[l[i][1]]=l[i][s]
+            value=value+[l[i][s]]
+    #print(d)
+    value=sorted(value)
+    #print(value)
+    for i in range(1,len(value)+1,1):
+        for key,v in d.items():
+            if v==value[-i]:
+                print(key," - ",v)
+                
+def lowest_income_record(income,start,end):
+    k=[]
+    print()
+    for i in income:
+        k=k+[i]
+
+    for i in range(0,len(k),1):
+        if start==k[i]:
+            s=i
+        if end==k[i]:
+            e=i
+    l=[]
+    for i in income.values:
+        l=l+[i]
+    low=99999999999999
+    for i in range(0,len(l),1):
+        for j in range(s,e+1,1):
+            if low>l[i][j]:
+                low=l[i][j]
+                name=l[i][1]
+    print(name,"has lowest income ",low)
+        
+        
+        
 income=readCSVdata(filepath)
-average_income(income)
+d=average_income(income)
+for key,value in d.items():
+    print(key," - ",value)
 average_of_3years(income)
 lowest_income(income,'2007','2010')
+list_of_income_lessthan_california(income,d)
+income_descending_year(income,'2009')
+lowest_income_record(income,'2005','2013')
