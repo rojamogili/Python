@@ -1,4 +1,13 @@
 # Average income of all states from 2005 to 2013
+#Average Income of all states from 2005 to 2013
+#State with highest average income in the last three years
+#State with lowest average income from 2007 to 2010(inclusive)
+#Print the list of all states in the same line with average income less than California
+#Print the names of states based on descending order of income in the year 2009
+#State with the lowest recorded income from 2005 to 2013
+
+
+
 
 filepath = 'Income.csv'
 import pandas as pd
