@@ -41,6 +41,35 @@ def average_of_3years(income):
             name=key
     print("\n",name," has highest income in last 3 years ",high)
 
+def lowest_income(income,start,end):
+    k=[]
+    for i in income:
+        k=k+[i]
+
+    for i in range(0,len(k),1):
+        if start==k[i]:
+            s=i
+        if end==k[i]:
+            e=i
+    l=[]
+    for i in income.values:
+        l=l+[i]
+    d={}
+    for i in range(0,len(l),1):
+        if l[i][1] not in d:
+            d[l[i][1]]=0
+        for j in range(s,e+1,1):
+            d[l[i][1]]+=l[i][j]
+    diff=e-s+1
+    low=9999999999999999999
+    for key,values in d.items():
+        d[key]=d[key]//diff
+        if low>=d[key]:
+            low=d[key]
+            name=key
+    print("\n",name,"has lowest average income ",low)
+
 income=readCSVdata(filepath)
 average_income(income)
 average_of_3years(income)
+lowest_income(income,'2007','2010')
