@@ -30,6 +30,8 @@ def average_income(income):
     for key,values in d.items():
         d[key]=d[key]//dif
     return d
+
+
 def average_of_3years(income):
     l=[]
     for i in income.values:
@@ -134,8 +136,13 @@ def lowest_income_record(income,start,end):
         
 income=readCSVdata(filepath)
 d=average_income(income)
+s=0
+c=0
 for key,value in d.items():
     print(key," - ",value)
+    s=s+value
+    c=c+1
+print("\nCombined income of all states average income is ",s)
 average_of_3years(income)
 lowest_income(income,'2007','2010')
 list_of_income_lessthan_california(income,d)
